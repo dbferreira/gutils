@@ -7,11 +7,7 @@ notifications:
     on_failure: change
 
 env:
-  - TYPESCRIPT=typescript@1.6
-  - TYPESCRIPT=typescript@1.7
-  - TYPESCRIPT=typescript@1.8
   - TYPESCRIPT=typescript@2.0
-  - TYPESCRIPT=typescript@next
 
 install:
   - npm install tslint --global
