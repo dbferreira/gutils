@@ -1,15 +1,10 @@
 language: node_js
+sudo: false
 
 notifications:
   email:
     on_success: never
     on_failure: change
-
-script:
-  - npm run lint
-  - npm rm tslint
-  - npm install $TYPESCRIPT --force
-  - npm run test-cov
 
 env:
   - TYPESCRIPT=typescript@1.6
@@ -18,10 +13,12 @@ env:
   - TYPESCRIPT=typescript@2.0
   - TYPESCRIPT=typescript@next
 
-node_js:
-  - "0.12"
-  - "iojs"
-  - "4"
-  - "stable"
+install:
+  - npm install tslint --global
 
-after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
+before_script: "echo starting"
+
+script:
+  - tslint *.ts
+
+after_script: "echo done"
